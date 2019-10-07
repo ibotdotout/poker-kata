@@ -1,24 +1,26 @@
 const isflush = function(cardString){
-	const cards = getCards(cardString)
-	const firstSuit = getSuit(cards[0]);
-	return cards.every(card => getSuit(card) === firstSuit)
+  const cards = getCards(cardString)
+  const firstSuit = getSuit(cards[0]);
+  return cards.every(card => getSuit(card) === firstSuit)
 }
 
 exports.compare = function(handA, handB){
-  if(isflush(handA) && !isflush(handB)) {
-		return "win";
-	} else if(isflush(handB) && isflush(handA)) {
-		return "draw";
-	} else {
-		return "lost";
-	}
+  const isFlushA = isflush(handA);
+  const isFlushB = isflush(handB);
+  if(isFlushA && !isFlushB) {
+    return "win";
+  } else if ( isFlushB && !isFlushA) {
+    return "lost";
+  } else {
+    return "draw";
+  }
 }
 const getCards = function(cards){
-	return cards.split(" ")
+  return cards.split(" ")
 }
 
 const getSuit = function(card){
-	return card[1]
+  return card[1]
 }
 
 exports.getCards = getCards

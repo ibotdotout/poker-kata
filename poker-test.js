@@ -11,8 +11,8 @@ describe("poker", function () {
       var result  = poker.isflush("1S 7S 3S 4S 5S")
       expect(result).toBe(true);
     });
-    
-  
+
+
     it("is not flush", function() {
       var result  = poker.isflush("1S 7H 3H 4H 5H")
       expect(result).toBe(false);
@@ -39,20 +39,25 @@ describe("poker", function () {
     });
   })
   describe("compare hands", function(){
-		it("left should be winner", function() {
-			var result = poker.compare("1H 7H 3H 4H 5H","1H 7H 3H 4H 5C");
-			expect(result).toBe("win");
-		});
-		
-		it("left should be lost", function() {
-			var result = poker.compare("1H 7H 3H 4H 5C","1H 7H 3H 4H 5H");
-			expect(result).toBe("lost");
-		});
+    it("left should be winner", function() {
+      var result = poker.compare("1H 7H 3H 4H 5H","1H 7H 3H 4H 5C");
+      expect(result).toBe("win");
+    });
 
-		it("if both is flush, then we should get draw", function() { 
-			var result = poker.compare("1H 7H 3H 4H 5H","1H 8H 3H 4H 5H");
-			expect(result).toBe("draw");
-		});
-	});
+    it("left should be lost", function() {
+      var result = poker.compare("1H 7H 3H 4H 5C","1H 7H 3H 4H 5H");
+      expect(result).toBe("lost");
+    });
+
+    it("if both is flush, then we should get draw", function() {
+      var result = poker.compare("1H 7H 3H 4H 5H","1H 8H 3H 4H 5H");
+      expect(result).toBe("draw");
+    });
+
+    it("if both is not flush, then we should get draw", function() {
+      var result = poker.compare("1H 7H 3C 4H 5H","1C 8H 3H 4H 5H");
+      expect(result).toBe("draw");
+    });
+  });
 
 });
