@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon --exec 'jasmine poker-test.js'"
+    "watch": "nodemon --exec 'jasmine poker-test.js'",
+    "test": "jasmine poker-test.js"
   },
   "author": "",
   "license": "ISC",
